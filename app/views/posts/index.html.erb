@@ -9,6 +9,7 @@ Index
         <%= link_to "Edit", edit_post_path(post)%>|
         <%= link_to "Show", post_path(post)%> |   
         <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure you want to do this ?" }%>    
+        Published <%= time_ago_in_words(post.created_at) %> ago
         </p></li>
 <% end %>
 </ul>
