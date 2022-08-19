@@ -1,0 +1,22 @@
+<% if flash[:cart_notice] %>
+    <%= render "cart/cart_notice" %>
+<% end %>
+
+<div id="shopping_cart">
+    <h3>Your Shopping Cart-AJAXS</h3>
+    <% unless @cart.cart_items.empty? %>
+        <p id="clear_cart_link">
+        <small><%= link_to "Clear Cart", cart_clear_path, remote: true %></small>
+        </p>
+    <% end %>
+    <ul>
+    <% @cart.cart_items.each do |item|%>
+        <li id="cart_item_<%= item.book.title %>">
+            <%= render partial: "cart/item", locals: {item: item} %>
+        </li>        
+    <% end %>
+    </ul>
+
+<p id="cart_total"><strong>Total: $<%= sprintf("%0.2f", @cart.total) %> </strong></p>
+
+</div>

@@ -1,0 +1,6 @@
+<%= render "search_box" %>
+
+<% if @books %>
+    <p>Your search for " <%= @search_item %> " produced <%= pluralize @books.size, "result" %>:</p>
+    <%= render "books" %>
+<% end %>

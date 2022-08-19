@@ -1,0 +1,103 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+#one: {}
+# column: value
+#
+#two: {}
+# column: value
+libro1:
+  id: 1
+  title: "Titulo"
+  publisher_id: 2
+  published_at: <%= Time.now.strftime("%Y-%m-%d") %>
+  isbn: 199-199-199-0
+  blurb: "blurb"
+  page_count: 100
+  price: 200
+  created_at: <%= Time.now.strftime("%Y-%m-%d") %
+  updated_at: <%= Time.now.strftime("%Y-%m-%d") %
+pro_rails_ecommerce:
+  id: 2
+  title: Pro Rails E-Commerce
+  publisher_id: 1
+  isbn: 199-199-199-1
+  published_at: <%= Time.now.strftime("%Y-%m-%d") %
+  created_at: <%= Time.now.strftime("%Y-%m-%d") %
+  updated_at: <%= Time.now.strftime("%Y-%m-%d") %
+pro_rails_ecommerce_2:
+  id: 3
+  title: Pro Rails E-Commerce 2nd Edition
+  publisher_id: 2
+  isbn: 199-199-199-2
+  created_at: <%= Time.now.strftime("%Y-%m-%d") %
+  updated_at: <%= Time.now.strftime("%Y-%m-%d") %
+pro_rails_ecommerce_7:
+  id: 8
+  title: Pro Rails E-Commerce 2nd Edition
+  publisher_id: 2
+  isbn: 199-199-199-6
+  price: 20
+  published_at: <%= Time.now.strftime("%Y-%m-%d") %
+  created_at: <%= Time.now.strftime("%Y-%m-%d") %
+pro_rails_ecommerce_3:
+  id: 4
+  title: Pro Rails E-Commerce 2nd Edition
+  publisher_id: 2
+  isbn: 199-199-199-3
+  price: 20
+  published_at: <%= Time.now.strftime("%Y-%m-%d") %
+  created_at: <%= Time.now.strftime("%Y-%m-%d") %
+pro_rails_ecommerce_4:
+  id: 5
+  title: Pro Rails E-Commerce 2nd Edition
+  publisher_id: 2
+  isbn: 199-199-199-4
+  price: 20
+  published_at: <%= Time.now.strftime("%Y-%m-%d") %
+  created_at: <%= Time.now.strftime("%Y-%m-%d") %
+pro_rails_ecommerce_5:
+  id: 6
+  title: Pro Rails E-Commerce 2nd Edition
+  publisher_id: 2
+  isbn: 199-199-199-5
+  price: 20
+  published_at: <%= Time.now.strftime("%Y-%m-%d") %
+  created_at: <%= Time.now.strftime("%Y-%m-%d") %
+pro_rails_ecommerce_6:
+  id: 7
+  title: Pro Rails E-Commerce 2nd Edition
+  publisher_id: 2
+  isbn: 199-199-199-6
+  price: 20
+  published_at: <%= Time.now.strftime("%Y-%m-%d") %
+  created_at: <%= Time.now.strftime("%Y-%m-%d") %
+
+pro_rails_ecommerce_8:
+  id: 9
+  title: Ruby for Dummies
+  publisher_id: 2
+  isbn: 199-199-199-7
+  price: 20
+  published_at: <%= Time.now.strftime("%Y-%m-%d") %
+  created_at: <%= Time.now.strftime("%Y-%m-%d") %
+pro_rails_ecommerce_9:
+  id: 10
+  title: Pride and Prejudice
+  publisher_id: 2
+  isbn: 199-199-199-8
+  price: 20
+  published_at: <%= Time.now.strftime("%Y-%m-%d") %
+  created_at: <%= Time.now.strftime("%Y-%m-%d") %
+pro_rails_ecommerce_10:
+  id: 11
+  title: The Idiot
+  publisher_id: 2
+  isbn: 199-199-199-9
+  price: 20
+  published_at: <%= Time.now.strftime("%Y-%m-%d") %
+  created_at: <%= Time.now.strftime("%Y-%m-%d") %
+

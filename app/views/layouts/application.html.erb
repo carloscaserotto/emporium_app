@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @page_title || 'Emporium' %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "style.css" %>
+    
+    
+  <!--
+  <style>
+    body { background-color: pink; color: #333; }
+  </style>
+  -->
+  </head>
+  
+  <body>
+    <p id="demo"></p>
+    <div id="header">
+      <h1 id="logo">Emporium&trade;</h1>
+      <h2 id="slogan">Books on Rails</h2>
+    </div>
+    <div id="menu">
+    <ul>
+      <li><a href="/author">Authors</a>&nbsp;|&nbsp;</li>
+      <li><a href="/publishers">Publishers</a>&nbsp;|&nbsp;</li>
+      <li><a href="/books">Books</a>&nbsp;|&nbsp;</li>
+      <li><a href="/catalog/index">Catalog</a>&nbsp;|&nbsp;</li>
+      <li><a href="/about">About</a>&nbsp;</li>
+    </ul>
+    </div>
+    
+    <div id="content">
+      <h1> <%= "#{@page_title}" if @page_title %></h1>
+      <% if flash[:notice] %>
+        <div id="notice">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <!-- <h1 style="color:blue"> HOLA MUNDO</h1> -->
+      <%= yield %>
+    </div>
+    
+    <% if @cart %>
+      <div id="shopping_cart">
+        <div id="results">
+        </div>
+        <%= render 'cart/cart'%>
+        </div>
+    <% end %>
+    <%= link_to "Back", :back %>
+    <div id="footer">
+      &copy; 1995-2006 Emporium
+    </div>
+    
+    
+    <%= javascript_pack_tag 'my_app', 'data-turbolinks-track': 'reload' %>
+  </body>
+</html>
+

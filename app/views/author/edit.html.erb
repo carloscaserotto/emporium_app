@@ -1,0 +1,10 @@
+<%=@author.errors.full_messages if @author.errors.any?%>
+
+<%= form_with model: @author do |form| %>
+  <%= render 'form' %>
+  <%= form.submit "Update" %>
+<% end %>
+
+<%= link_to 'Show', author_path(@author) %>
+<%= link_to 'Back', author_index_path %>
+

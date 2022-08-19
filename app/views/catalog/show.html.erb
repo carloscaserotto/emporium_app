@@ -1,0 +1,15 @@
+<h2>by <%= @book.authors.map{|a| a.name}.join(", ") if @book %></h2>
+<%= image_tag @book.image, style: "width: 100px; display: inline" unless @book.image.blank? %>
+<dl>
+    <dt>Price</dt>
+        <dd>$<%= sprintf("%0.2f", @book.price) -%></dd>
+    <dt>Page count</dt>
+        <dd><%= @book.page_count -%></dd>
+    <dt>Publisher</dt>
+        <dd><%= @book.publisher.publisher %></dd>
+    <dt>Blurb</dt>
+        <dd><%= @book.blurb %></dd>
+</dl>
+<p><%= link_to "Back to Catalog", catalog_index_path %></p>
+<p id="blurb"> </p>
+<%= javascript_pack_tag 'my_app', 'data-turbolinks-track': 'reload' %>

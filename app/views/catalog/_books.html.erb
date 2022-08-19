@@ -1,0 +1,24 @@
+<ul id="books">
+    
+        <% @books.each do |book| %>
+        
+        <li class="book" id="book_<%= book.id %>">
+        <dl>
+            <dt><%= link_to book.title, "/catalog/show/#{book.id}"  %></dt>
+                <% book.authors.each do |author| %>
+                    <dd><%= author.last_name %>, <%= author.first_name %></dd>
+                <% end %>
+            <dd><%= pluralize(book.page_count, "page") %></dd>
+            <dd>Price: $<%= sprintf("%.2f", book.price) if book.price%></dd>
+            <dd><small>Publisher: <%= book.publisher.publisher %></small></dd>
+            <!--<dd><strong><%= link_to "+", "/cart/#{book.id}" %></strong></dd>-->
+            <!--<strong><%= add_book_link('+',book) %> </strong>-->
+            <%= link_to "+", "/cart/#{book.id}", remote: true %>|
+            <%= link_to "-", "/cart/dell/#{book.id}", remote: true %>
+        </dl>
+        </li>
+        
+        <% end %>    
+    <%= will_paginate @books, :container => false %>
+</ul>
+

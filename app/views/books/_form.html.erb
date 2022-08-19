@@ -1,0 +1,45 @@
+<%= form_with(model: @book) do |form| %>
+  <% if book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+        <% book.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p><label for="book_title">Title</label><br/>
+  <%= text_field 'book', 'title' %></p>
+  <p><label for="book_publisher">Publisher</label><br/>
+  <%= collection_select :book, :publisher_id, @publishers, :id, :publisher %></p>
+  
+  <p><label for="book[author_ids][]">Authors</label><br/>
+  <%= select_tag 'book[author_ids][]',options_from_collection_for_select(@authors, :id, :name, @book.authors.collect{|author| author.id}),
+                  { :multiple => true, :size => 5 }%>
+  </p>
+  
+  <p><label for="book_published_at">Published at</label><br/>
+  <%= datetime_select 'book', 'published_at' %></p>
+  
+  <p><label for="book_isbn">Isbn</label><br/>
+  <%= text_field 'book', 'isbn' %></p>
+  
+  <p><label for="book_blurb">Blurb</label><br/>
+  <%= text_area 'book', 'blurb' %></p>
+  
+  <p><label for="book_price">Price</label><br/>
+  <%= text_field 'book', 'price' %></p>
+  
+  <p><label for="book_price">Page count</label><br/>
+  <%= text_field 'book', 'page_count' %></p>
+  
+  <p><label for="book_cover_image">Cover image</label><br/>
+  <%= form.file_field :image %></p>
+  
+  
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

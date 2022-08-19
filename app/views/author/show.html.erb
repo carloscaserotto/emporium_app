@@ -1,0 +1,12 @@
+<dl>
+    <dt>First Name</dt>
+    <dd><%= @author.first_name %></dd>
+    <dt>Last Name</dt>
+    <dd><%= @author.last_name %></dd>
+</dl>
+
+<%= session[:current_user_id] %>
+<!--<p><%= link_to 'Edit', :action => 'edit', :id => @author %> |-->
+<p><td><%= link_to 'Edit', edit_author_path(@author) %></td> |
+<!--<%= link_to 'Back', :action => 'index' %></p>-->
+<%= link_to 'Back', author_index_path %></p>

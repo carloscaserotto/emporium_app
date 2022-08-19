@@ -1,0 +1,7 @@
+<% if (item.price * item.amount) != 0 %>
+    <%= link_to item.book.title, book_path(item.book.id) %>
+    <%= pluralize(item.amount, "pc", "pcs") %>, $<%= sprintf("%0.2f", item.price * item.amount) %>
+    <%= link_to "+", "/cart/#{item.book.id}", remote: true %>|
+    <%= link_to "-", "/cart/dell/#{item.book.id}", remote: true %>
+<% end %>
+

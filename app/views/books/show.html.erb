@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+<% if @book.image.attached? %>
+    <%= image_tag @book.image, style: "width: 100px; display: inline" %>
+<% end %>
+
+
+<dl>
+    <dt>Title</dt>
+    <dd><%= @book.title %></dd>
+    
+    <dt>Publisher</dt>
+    <dd><%= @book.publisher.publisher %></dd>
+    
+    <dt>Published at</dt>
+    <dd><%= @book.published_at.strftime("%m/%d/%Y at %I:%M%p") %></dd>
+    
+    <dt>Authors</dt>
+    <dd>
+        <% @book.authors.each do |author| %>
+            <%= author.name%>
+        <% end %>
+    </dd>
+    
+    <dt>ISBN</dt>
+    <dd><%= @book.isbn %></dd>
+    
+    <dt>Blurb</dt>
+    <dd><%= @book.blurb %></dd>
+    
+    <dt>Price</dt>
+    <dd><%= @book.price %></dd>
+    
+    <dt>Page count</dt>
+    <dd><%= @book.page_count %></dd>
+    
+    <dt>Cover image</dt>
+    <% if @book.image.attached? %>
+        <dd><%= image_tag @book.image, style: "width: 300px; display: inline" %></dd>
+    <% end %>
+</dl>
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back to books', books_path %> |
+<%= link_to "Back-page", :back %> 

@@ -1,0 +1,4 @@
+<strong>Please confirm adding <em>"<%= @book.title %>"</em> to your shopping cart.</strong>
+<%= button_to "Confirm", "/cart/#{params[:id]}", remote: true %> <br>
+<%= button_to "Go back", catalog_index_path, method: :get %>
+
