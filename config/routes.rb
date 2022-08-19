@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+  root 'books#index'
  
   get 'catalog/index'
   get 'catalog/show/:id', to: 'catalog#show'
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   post 'cart/:id', to: 'cart#add'
   get 'cart/dell/:id', to: 'cart#dell'
   
-  
+  resources :posts
   
   resources :books
   resources :publishers
