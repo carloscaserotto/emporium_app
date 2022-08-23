@@ -1,0 +1,17 @@
+<% @post.comments.each do |comment| %> 
+    <li><%= comment.comment %>
+        <%= link_to "Show Comment", [comment.post, comment] %>
+        <%= link_to "Edit Comment", "/posts/#{comment.post.id}/comments/#{comment.id}/edit", data: {confirm: "Are you sure?"} %>|  
+                                 <!--/posts/:post_id/comments/:id/edit-->
+        <%= link_to "Delete Comment", [comment.post, comment], method: :delete,
+            data: {confirm: "Are you sure?"} %>
+</p>
+    </li>
+<% end%>
+ <!--
+
+ Clicking this new "Destroy Comment" link will fire off a DELETE
+/posts/:post_id/comments/:id to our CommentsController, 
+which can then use this to find the comment we want to delete
+ 
+ -->

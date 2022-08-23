@@ -1,16 +1,17 @@
-Index
+<h1>Forum</h1>
 <ul>
 <% @posts.each do  |post| %>
+<div  id="wrapper">
     <li>
-        <p>Title: <%= post.title%></p></li>
+        <p><strong>Title:</strong> <%= link_to "#{post.title}", post_path(post)%> | </p></li>
     <li>
         <p>
-        Content: <%= post.content%>
-        <%= link_to "Edit", edit_post_path(post)%>|
-        <%= link_to "Show", post_path(post)%> |   
+        <strong>Content:</strong> <%= post.content%> <%= post.created_at%>
+        <%= link_to "Edit", edit_post_path(post)%>|  
         <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure you want to do this ?" }%>    
-        Published <%= time_ago_in_words(post.created_at) %> ago
+        <span style="font-size: 10px" > Published <%= time_ago_in_words(post.created_at) %> ago</span>
         </p></li>
 <% end %>
 </ul>
+</div>
 <%= link_to "New post", new_post_path%>

@@ -6,6 +6,6 @@ class AboutController < ApplicationController
   end
  
     
-  end
+  
 
 end

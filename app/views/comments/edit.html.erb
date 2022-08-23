@@ -1,0 +1,15 @@
+<h2>Edit the comment:</h2>
+<%= form_with url: [@comment.post, @comment], method: :patch do |form| %>
+<%= "/posts/#{@comment.post.id}/comments/#{@comment.id}/edit" %><br>
+<%= "/posts/#{@comment.post.id}/comments/#{@comment.id}" %>
+
+<p>
+   <%= form.label :comment %><br>
+   <%= form.text_area :comment, value: "#{@comment.comment}" %>
+</p>
+<p>
+    <%= form.submit "Update" %>
+</p>
+<% end %>
+
+<%= link_to "Cancel", post_path(@post) %>

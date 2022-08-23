@@ -1,0 +1,5 @@
+Comment: "<%= @comment.comment %>"<br>
+<%= link_to "Edit Comment", "/posts/#{@comment.post.id}/comments/#{@comment.id}/edit", data: {confirm: "Are you sure?"} %>|  
+<!--/posts/:post_id/comments/:id/edit-->
+<%= link_to "Delete Comment", [@comment.post, @comment], method: :delete, data: {confirm: "Are you sure?"} %><br>
+<%= link_to "Return to post #{@post.title}", post_path(@post) %>

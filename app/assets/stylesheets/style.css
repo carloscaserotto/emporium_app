@@ -161,6 +161,11 @@ body, p, ol, ul, td {
     background-color: #fff; color: #333;
     margin-right: 230px;
   }
+  .wrapper {
+    width: 60%;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
 /*
   #books {
     list-style: none;
