@@ -48,8 +48,9 @@ class CheckoutTest < ActionDispatch::IntegrationTest
               card_expiration_year: '2009',
               card_verification_value: '333',
               } }
-    assert_response :redirect
-    assert_redirected_to '/checkout/thank_you'
+    assert_response :success
+    get '/checkout/thank_you'
+    assert_response :success
 
   end
 

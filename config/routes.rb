@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   
   get 'checkout', to: 'checkout#index'
   post 'checkout', to: 'checkout#place_order'
+  get 'checkout/thanks', to: 'checkout#thank_you'
   
   resources :books
   resources :publishers

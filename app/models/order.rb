@@ -21,7 +21,7 @@ class Order < ApplicationRecord
     #validates_length_of :phone_number, :in => 7..20
     validates :phone_number, length: { in: 7..20 }
     #validates_length_of :customer_ip, :in => 7..15
-    validates :customer_ip, length: { in: 7..15 }
+    validates :customer_ip, length: { in: 3..15 }
     #validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
     validates :email, format: { with: /\A\S+@.+\.\S+\z/ }
     #validates_inclusion_of :status, :in => %w(open processed closed failed)
@@ -36,12 +36,12 @@ class Order < ApplicationRecord
     validates :card_expiration_year, inclusion: { in: %w(2022 2023 2024 2025 2026 2027 2028 2029 2030), message: "%{value} is not a valid year" }, on: :create
     #validates_length_of :card_verification_value, :in => 3..4, :on => :create
     validates :card_verification_value, length: { in: 3..4 }, on: :create
-
+    
     def total
         order_items.inject(0) {|sum, n| n.price * n.amount + sum}
     end
 
-    private
+    #private
     def process
         result = true
         #
