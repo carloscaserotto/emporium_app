@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  root 'books#index'
+  get 'checkout/index'
+  get 'checkout/place_order'
+  get 'checkout/thank_you'
+  devise_for :users
+  root 'home#index'
   
   get 'catalog/index'
   get 'catalog/show/:id', to: 'catalog#show'
@@ -12,7 +16,8 @@ Rails.application.routes.draw do
   post 'cart/:id', to: 'cart#add'
   get 'cart/dell/:id', to: 'cart#dell'
   
-  
+  get 'checkout', to: 'checkout#index'
+  post 'checkout', to: 'checkout#place_order'
   
   resources :books
   resources :publishers

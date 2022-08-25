@@ -1,8 +1,10 @@
 <table>
     <tr>
         <th>Name</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <% if current_user.email == "chino@gmail.com"%>
+            <th>Edit</th>
+            <th>Delete</th>
+        <% end %>
     </tr>
     <%= render :partial => 'author', :collection => @authors %>
 </table>

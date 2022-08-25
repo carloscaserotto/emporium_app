@@ -181,3 +181,27 @@ body, p, ol, ul, td {
     cursor: pointer;
   }
  */ 
+ #checkout fieldset {
+  border-top: 1px solid #efefef;
+  border-left: 1px solid #efefef;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  padding: 1em 1em 1em 1.5em;
+  width: 300px;
+  margin-bottom: 10px;
+  }
+  #checkout fieldset:hover {
+  border: 1px solid #3A789D;
+  }
+  #checkout legend {
+  font-weight: bold;
+  }
+  #checkout fieldset input {
+  margin: 1px;
+  }
+  #order_card_verification_value {
+  width: 50px;
+  }
+  #checkout fieldset input:focus {
+  background-color: #cccccc;
+  }

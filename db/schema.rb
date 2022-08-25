@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_19_181934) do
+ActiveRecord::Schema.define(version: 2022_08_24_113241) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -88,6 +88,31 @@ ActiveRecord::Schema.define(version: 2022_08_19_181934) do
     t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
+  create_table "order_items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "book_id"
+    t.integer "order_id"
+    t.integer "price"
+    t.integer "amount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "email"
+    t.string "phone_number"
+    t.string "ship_to_first_name"
+    t.string "ship_to_last_name"
+    t.string "ship_to_address"
+    t.string "ship_to_city"
+    t.string "ship_to_postal_code"
+    t.string "ship_to_country"
+    t.string "customer_ip"
+    t.string "status"
+    t.string "error_message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -99,6 +124,18 @@ ActiveRecord::Schema.define(version: 2022_08_19_181934) do
     t.string "publisher"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

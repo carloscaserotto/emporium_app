@@ -2,7 +2,9 @@
     <!--<td><%= link_to author.name, :action => 'show', :id => author %></td>-->
     <td><%= link_to author.name, author_path(author) %></td>
     <!--<td><%= link_to 'Edit', :action => 'edit', :id => author %></td>-->
-    <td><%= link_to 'Edit', edit_author_path(author) %></td>
-    <!--<%= button_to 'Delete', {:action => 'destroy', :id => author},:confirm =>"Are you sure you want to delete author #{author.name}?" %>-->
-    <td><%= button_to 'Delete', author_path(author), method: :delete, data: {confirm: "Are you sure?"} %></td>
+    <% if current_user.email == "chino@gmail.com"%>
+        <td><%= link_to 'Edit', edit_author_path(author) %></td>
+        <!--<%= button_to 'Delete', {:action => 'destroy', :id => author},:confirm =>"Are you sure you want to delete author #{author.name}?" %>-->
+        <td><%= button_to 'Delete', author_path(author), method: :delete, data: {confirm: "Are you sure?"} %></td>
+    <% end %>
 </tr>

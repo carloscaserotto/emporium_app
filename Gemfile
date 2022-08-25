@@ -27,6 +27,9 @@ gem 'rails-controller-testing'
 gem 'hirb'
 gem 'will_paginate', '~> 3.0'
 gem 'acts_as_ferret', '>= 0.5'
+#gem 'acts-as-taggable-on'
+gem 'devise'
+gem 'country_select', '~> 6.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 

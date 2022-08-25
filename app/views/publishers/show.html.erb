@@ -10,5 +10,7 @@
   <dd><%= @publisher.publisher %></dd>
 </dl>
 
-<%= link_to 'Edit', edit_publisher_path(@publisher) %> |
+<% if current_user.email == "chino@gmail.com"%>
+  <%= link_to 'Edit', edit_publisher_path(@publisher) %> |
+<% end %>
 <%= link_to 'Back', publishers_path %>

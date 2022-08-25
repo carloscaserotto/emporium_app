@@ -24,6 +24,14 @@
       <h1 id="logo">Emporium&trade;</h1>
       <h2 id="slogan">Books on Rails</h2>
     </div>
+    <p><% if user_signed_in? %>
+        Logged in as <strong><%= current_user.email %></strong>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete  %>
+      <% else %>
+        <%= link_to "Sign up", new_user_registration_path%> |
+        <%= link_to "Login", new_user_session_path%>
+      <% end %>
+    </p>
     <div id="menu">
     <ul>
       <li><a href="/author">Authors</a>&nbsp;|&nbsp;</li>
@@ -31,7 +39,15 @@
       <li><a href="/books">Books</a>&nbsp;|&nbsp;</li>
       <li><a href="/catalog/index">Catalog</a>&nbsp;|&nbsp;</li>
       <li><a href="/posts">Posts</a>&nbsp;|&nbsp;</li>
-      <li><a href="/about">About</a>&nbsp;</li>
+      <li><a href="/about">About</a>&nbsp;|&nbsp;</li>
+      <li><% if user_signed_in? %>
+            Logged in as <strong><%= current_user.email %></strong>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete  %>
+          <% else %>
+            <%= link_to "Sign up", new_user_registration_path%> |
+          <%= link_to "Login", new_user_session_path%>
+          <% end %>
+      </li>
     </ul>
     </div>
     
@@ -43,6 +59,12 @@
         </div>
       <% end %>
       <!-- <h1 style="color:blue"> HOLA MUNDO</h1> -->
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p id="notice"><%= alert %></p>
+      <% end %>
       <%= yield %>
     </div>
     

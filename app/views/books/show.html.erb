@@ -38,6 +38,8 @@
         <dd><%= image_tag @book.image, style: "width: 300px; display: inline" %></dd>
     <% end %>
 </dl>
-<%= link_to 'Edit', edit_book_path(@book) %> |
+<% if current_user.email == "chino@gmail.com"%>
+    <%= link_to 'Edit', edit_book_path(@book) %> |
+<% end %>
 <%= link_to 'Back to books', books_path %> |
 <%= link_to "Back-page", :back %> 
