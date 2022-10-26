@@ -23,6 +23,7 @@ Things you may want to cover:
 
 * ...
 
+
 app>views>checkout>index.html.erb
 
 <script src="https://js.stripe.com/v3/"></script>
