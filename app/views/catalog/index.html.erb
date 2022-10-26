@@ -5,7 +5,15 @@
 
 </dl>
 
+<% if @cart %>
+    <div id="shopping_cart">
+      <div id="results"></div>
+        <%= render 'cart/cart'%>
+    </div>
+<% end %>
 
+<br><br>
+<%= link_to "Back", :back %>
 
 
 

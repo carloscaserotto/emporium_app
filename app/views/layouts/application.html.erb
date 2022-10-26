@@ -53,11 +53,7 @@
     
     <div id="content">
       <h1> <%= "#{@page_title}" if @page_title %></h1>
-      <% if flash[:notice] %>
-        <div id="notice">
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
+
       <!-- <h1 style="color:blue"> HOLA MUNDO</h1> -->
       <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
@@ -68,14 +64,8 @@
       <%= yield %>
     </div>
     
-    <% if @cart %>
-      <div id="shopping_cart">
-        <div id="results">
-        </div>
-        <%= render 'cart/cart'%>
-        </div>
-    <% end %>
-    <%= link_to "Back", :back %>
+
+    
     <div id="footer">
       &copy; 1995-2006 Emporium
     </div>
