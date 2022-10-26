@@ -27,15 +27,15 @@ class Order < ApplicationRecord
     #validates_inclusion_of :status, :in => %w(open processed closed failed)
     validates :status, inclusion: { in: %w(open processed closed failed), message: "%{value} is not valid" }
     #validates_inclusion_of :card_type, :in => ['Visa', 'MasterCard', 'Discover'],:on => :create
-    validates :card_type, inclusion: { in: ['Visa', 'MasterCard', 'Discover'], message: "%{value} is not valid card type" }, on: :create
+    #validates :card_type, inclusion: { in: ['Visa', 'MasterCard', 'Discover'], message: "%{value} is not valid card type" }, on: :create
     #validates_length_of :card_number, :in => 13..19, :on => :create
-    validates :card_number, length: { in: 13..19 }, on: :create
+    #validates :card_number, length: { in: 13..19 }, on: :create
     #validates_inclusion_of :card_expiration_month, :in => %w(1 2 3 4 5 6 7 8 9 10 11 12), :on => :create
-    validates :card_expiration_month, inclusion: { in: %w(1 2 3 4 5 6 7 8 9 10 11 12), message: "%{value} is not a valid month" }, on: :create
+    #validates :card_expiration_month, inclusion: { in: %w(1 2 3 4 5 6 7 8 9 10 11 12), message: "%{value} is not a valid month" }, on: :create
     #validates_inclusion_of :card_expiration_year, :in => %w(2006 2007 2008 2009 2010), :on => :create
-    validates :card_expiration_year, inclusion: { in: %w(2022 2023 2024 2025 2026 2027 2028 2029 2030), message: "%{value} is not a valid year" }, on: :create
+    #validates :card_expiration_year, inclusion: { in: %w(2022 2023 2024 2025 2026 2027 2028 2029 2030), message: "%{value} is not a valid year" }, on: :create
     #validates_length_of :card_verification_value, :in => 3..4, :on => :create
-    validates :card_verification_value, length: { in: 3..4 }, on: :create
+    #validates :card_verification_value, length: { in: 3..4 }, on: :create
     
     def total
         order_items.inject(0) {|sum, n| n.price * n.amount + sum}

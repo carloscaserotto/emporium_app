@@ -28,32 +28,83 @@ class CheckoutController < ApplicationController
     @order.ship_to_city = params[:ship_to_city]
     @order.ship_to_postal_code = params[:ship_to_postal_code]
     @order.ship_to_country = params[:ship_to_country]
-    @order.card_type = params[:card_type]
-    @order.card_number = params[:card_number]
-    @order.card_expiration_month = params[:card_expiration_month]
-    @order.card_expiration_year = params[:card_expiration_year]
-    @order.card_verification_value = params[:card_verification_value]
+    #@order.card_type = params[:card_type]
+    #@order.card_number = params[:card_number]
+    #@order.card_expiration_month = params[:card_expiration_month]
+    #@order.card_expiration_year = params[:card_expiration_year]
+    #@order.card_verification_value = params[:card_verification_value]
     @order.customer_ip = request.remote_ip
     @order.status = "open"
     populate_order
+    @total_price = @cart.total
     if @order.save
-      if @order.process
-        flash[:notice] = 'Your order has been submitted, and will be processed immediately.'
-        session[:order_id] = @order.id
-        # Empty the cart
-        @cart.cart_items.destroy_all
-        redirect_to checkout_thanks_path
-      else
-        flash[:notice] = "Error while placing order. '#{@order.error_message}'"
-        render :action => 'index'
-      end
+      flash[:notice] = 'Your order has been submitted, please proceed to the payment.'
+      session[:order_id] = @order.id
+      # Empty the cart
+      @cart.cart_items.destroy_all
+      redirect_to checkout_payment_path
     else
-      render 'index'
+      flash[:notice] = "Error while placing order. '#{@order.error_message}'"
+      render :action => 'index'
     end
   end
 
+  def payment
+  end
+
   def thank_you
+    #byebug
     @page_title = 'Thank You!'
+    @status = params[:redirect_status]
+    if @status = "succeeded"
+      id = session[:order_id]
+      order = Order.find(id)
+      order.status = "closed"
+      order.save
+      flash[:notice] = 'Your order has been paid.'
+    else
+      flash[:notice] = "There was a problem with you payment."
+    end
+  end
+   
+  
+  def secret
+    #byebug
+    @total_price = Order.last.total
+    Stripe.api_key = Rails.application.credentials.stripe[:STRIPE_TEST_SECRET_KEY]
+    @pi = Stripe::PaymentIntent.create({amount: @total_price, currency: 'usd', automatic_payment_methods: {enabled: true}})
+    render json: @pi      
+  end
+
+  def confirm
+    byebug
+    @status = params[:redirect_status]
+    if @status = "succeeded"
+      if @order.save
+        if @order.process
+          @order_number = @order.id
+          @total_price = @cart.total
+          flash[:notice] = 'Your order has been submitted, and will be processed immediately.'
+          session[:order_id] = @order.id
+          # Empty the cart
+          @cart.cart_items.destroy_all
+          redirect_to checkout_thanks_path
+        else
+          flash[:notice] = "Error while placing order. '#{@order.error_message}'"
+          render :action => 'index'
+        end
+      else
+        render 'index'
+      end
+    end
+    #@current_user = current_user.email
+    @pi = params[:payment_intent_client_secret]
+    @pi_client_secret = params[:payment_intent_client_secret]
+    #if params[:redirect_status] == 'requires_payment_method'
+    #    render 'http://localhost:3000/checkout'    
+    #else 
+    #    @status = params[:redirect_status]
+    #end
   end
 
   private

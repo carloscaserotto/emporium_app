@@ -18,7 +18,9 @@
         <small><%= link_to "Clear Cart", cart_clear_path, remote: true %></small>
         </p>
 <% end %>
-<p><strong>
-        <%= link_to "Proceed to Checkout", checkout_path unless controller.controller_name == 'checkout' %>
-</strong></p>
-</div>
+<% unless @cart.cart_items.empty? %>
+    <p><strong>
+            <%= link_to "Proceed to Checkout", checkout_path unless controller.controller_name == 'checkout' %>
+    </strong></p>
+    </div>
+<% end %>
